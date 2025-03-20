@@ -1,0 +1,202 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #050520;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.game-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 100vh;
+    max-height: 800px;
+    margin: auto;
+}
+
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    transition: opacity 0.3s ease;
+}
+
+h1 {
+    font-size: 3.5em;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 2.5em;
+    text-shadow: 0 0 8px #0ff, 0 0 15px #0ff;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: transparent;
+    border: 2px solid #0ff;
+    color: #0ff;
+    padding: 12px 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px #0ff;
+    box-shadow: 0 0 10px #0ff, inset 0 0 10px #0ff;
+    outline: none;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 15px #0ff, inset 0 0 15px #0ff;
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+}
+
+/* Game Elements */
+.planet-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#planet {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle at 60%, #5d37ff, #37a0ff);
+    border-radius: 50%;
+    box-shadow: 0 0 20px #37a0ff, 0 0 30px #37a0ff;
+    z-index: 1;
+}
+
+.orbit {
+    position: absolute;
+    border: 2px dotted rgba(0, 255, 255, 0.5);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+#orbit-inner {
+    width: 250px;
+    height: 250px;
+}
+
+#orbit-middle {
+    width: 350px;
+    height: 350px;
+}
+
+#orbit-outer {
+    width: 450px;
+    height: 450px;
+}
+
+#ship {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ff0;
+    box-shadow: 0 0 10px #ff0, 0 0 15px #ff0;
+    clip-path: polygon(0 50%, 100% 0, 70% 50%, 100% 100%);
+    z-index: 2;
+    transition: transform 0.2s ease;
+}
+
+.obstacle {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #f00;
+    box-shadow: 0 0 10px #f00, 0 0 15px #f00;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.power-up {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: #0f0;
+    box-shadow: 0 0 10px #0f0, 0 0 15px #0f0;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.game-info {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 1.2em;
+    text-shadow: 0 0 5px #0ff;
+}
+
+#score, #high-score {
+    margin-bottom: 10px;
+}
+
+#new-high-score {
+    color: #0f0;
+    font-weight: bold;
+    text-shadow: 0 0 5px #0f0, 0 0 10px #0f0;
+    font-size: 1.5em;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+@media (max-width: 600px) {
+    .game-container {
+        max-height: 500px;
+    }
+    
+    #planet {
+        width: 100px;
+        height: 100px;
+    }
+    
+    #orbit-inner {
+        width: 180px;
+        height: 180px;
+    }
+    
+    #orbit-middle {
+        width: 250px;
+        height: 250px;
+    }
+    
+    #orbit-outer {
+        width: 320px;
+        height: 320px;
+    }
+}
